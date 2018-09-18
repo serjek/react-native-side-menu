@@ -239,7 +239,7 @@ export default class SideMenu extends React.Component {
       { right: this.state.width - this.state.openMenuOffset };
 
     const menu = (
-      <View style={[styles.menu, boundryStyle]}>
+      <View style={[styles.menu, boundryStyle]} {...this.responder.panHandlers}>
         {this.props.menu}
       </View>
     );
@@ -299,6 +299,7 @@ SideMenu.defaultProps = {
   animationFunction: (prop, value) => Animated.spring(prop, {
     toValue: value,
     friction: 8,
+    useNativeDriver: true,
   }),
   onAnimationComplete: () => {},
   isOpen: false,
